@@ -1,0 +1,57 @@
+buildscript {
+    repositories {
+//        maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+        mavenLocal()
+    }
+    dependencies {
+        classpath "cn.donting.web.os:web-os-gradle-plugin:0.0.12-SNAPSHOT"
+    }
+}
+plugins {
+    id 'org.springframework.boot' version '2.6.13'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+    id 'java'
+}
+apply plugin: "cn.donting.web.os.gradle-plugin"
+
+group = 'cn.donting.web.os.desktop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenLocal()
+    maven { url "https://maven.aliyun.com/nexus/content/groups/public" }
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+
+    compileOnly 'cn.donting.web.os:web-os-api:0.0.15-SNAPSHOT'
+
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compileOnly 'cn.donting.web.os:web-os-core:0.0.15-SNAPSHOT'
+
+}
+
+//osCoreVersion}/{name}-{osCoreVersion}.jar
+wapRun {
+    osCoreDownloadURL = 'file:C:\\Users\\59664\\.m2\\repository\\cn\\donting\\web\\os\\{name}\\{osCoreVersion}\\{name}-{osCoreVersion}.jar'
+    pageNotFoundForwardHost = 'http://localhost:5173'
+    pageNotFoundForwardWapId = false
+}
+
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

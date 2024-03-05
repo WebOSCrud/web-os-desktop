@@ -1,0 +1,17 @@
+{
+  "id": "desktop.donting",
+  "name": "桌面",
+  "iconResource": "",
+  "description": "",
+  "version": "0.0.1",
+  "numberVersion": 1,
+  "fileTypes": [
+  ],
+  "wapWindows": [
+    {
+      "name": "desktop",
+      "type": "Desktop",
+      "url": "/page/desktop/index.html"
+    }
+  ]
+}
