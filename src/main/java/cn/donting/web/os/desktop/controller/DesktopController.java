@@ -26,12 +26,20 @@ public class DesktopController {
     public ResponseBody<List<FileVo>> files() {
         User loginUser = osApi.userService().getLoginUser();
         File desktopSpacesFolder = osApi.fileSpaces().getDesktopSpacesFolder(loginUser);
-        List<FileVo> fileVos=new ArrayList<>();
+        List<FileVo> fileVos = new ArrayList<>();
         for (File file : desktopSpacesFolder.listFiles()) {
             FileVo fileVo = new FileVo(file);
             fileVos.add(fileVo);
         }
         return ResponseBody.success(fileVos);
+    }
+
+    @GetMapping("/path")
+    public ResponseBody<FileVo> desktopFile() {
+        User loginUser = osApi.userService().getLoginUser();
+        File desktopSpacesFolder = osApi.fileSpaces().getDesktopSpacesFolder(loginUser);
+        FileVo fileVo = new FileVo(desktopSpacesFolder);
+        return ResponseBody.success(fileVo);
     }
 
 }

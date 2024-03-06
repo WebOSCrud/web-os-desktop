@@ -4,6 +4,7 @@ import lombok.Data;
 
 /**
  * os http 返回结构体
+ *
  * @param <T>
  */
 @Data
@@ -43,9 +44,11 @@ public class ResponseBody<T> {
         this.code = code;
         this.msg = msg;
     }
+
     public static <T> ResponseBody<T> success() {
         return new ResponseBody<>(ResponseBodyCodeEnum.OK.getCode(), ResponseBodyCodeEnum.OK.getMsg());
     }
+
     public static <T> ResponseBody<T> success(T data) {
         return new ResponseBody<>(ResponseBodyCodeEnum.OK.getCode(), ResponseBodyCodeEnum.OK.getMsg(), data);
     }
@@ -53,13 +56,20 @@ public class ResponseBody<T> {
     public static <T> ResponseBody<T> fail(int code, String msg) {
         return new ResponseBody<>(code, msg);
     }
+
+    public static <T> ResponseBody<T> fail(String msg) {
+        return new ResponseBody<>(500, msg);
+    }
+
     public static <T> ResponseBody<T> fail(ResponseBodyCodeEnum code, String msg) {
         return new ResponseBody<>(code.getCode(), msg);
     }
+
     public static <T> ResponseBody<T> fail(ResponseBodyCodeEnum code) {
         return new ResponseBody<>(code.getCode(), code.getMsg());
     }
+
     public static <T> ResponseBody<T> failData(ResponseBodyCodeEnum code, T data) {
-        return new ResponseBody<>(code.getCode(), code.getMsg(),data);
+        return new ResponseBody<>(code.getCode(), code.getMsg(), data);
     }
 }

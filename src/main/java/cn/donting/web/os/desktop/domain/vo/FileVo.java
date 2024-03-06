@@ -11,11 +11,13 @@ public class FileVo {
     private boolean  dir;
     private long size;
     private long lastModifiedTime;
+    private String prentPath;
     public FileVo(File file) {
         name=file.getName();
         path=file.getAbsolutePath();
         dir=file.isDirectory();
         size=file.length();
         lastModifiedTime=file.lastModified();
+        prentPath=file.getParentFile().getAbsolutePath();
     }
 }

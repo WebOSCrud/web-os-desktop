@@ -32,6 +32,7 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'cn.hutool:hutool-core:5.8.26'
 
 
     compileOnly 'cn.donting.web.os:web-os-api:0.0.15-SNAPSHOT'
@@ -41,6 +42,8 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
     compileOnly 'cn.donting.web.os:web-os-core:0.0.15-SNAPSHOT'
+
+
 
 }
 
