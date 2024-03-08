@@ -35,6 +35,16 @@ public class FileController {
         return ResponseBody.fail("重命名失败");
     }
 
+    @PostMapping("/list")
+    public ResponseBody<List<FileVo>> list(@RequestBody FilePathPar filePathPar) {
+        File dir = new File(filePathPar.getPath());
+        List<FileVo> fileVos = new ArrayList<>();
+        for (File file : dir.listFiles()) {
+            fileVos.add(new FileVo(file));
+        }
+        return ResponseBody.success(fileVos);
+    }
+
     @PostMapping("/delete")
     public ResponseBody delete(@RequestBody FilePathPar filePathPar) {
         File file = new File(filePathPar.getPath());
@@ -62,4 +72,6 @@ public class FileController {
             return ResponseBody.fail(e.getLocalizedMessage());
         }
     }
+
+
 }

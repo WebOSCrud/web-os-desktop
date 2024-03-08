@@ -33,7 +33,8 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'cn.hutool:hutool-core:5.8.26'
-
+//    implementation 'cn.hutool:hutool-system:5.8.26'
+//    implementation 'com.github.oshi:oshi-core:6.4.1'
 
     compileOnly 'cn.donting.web.os:web-os-api:0.0.15-SNAPSHOT'
 
