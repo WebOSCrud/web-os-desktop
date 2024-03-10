@@ -12,6 +12,7 @@ public class FileVo {
     private long size;
     private long lastModifiedTime;
     private String prentPath;
+    private boolean hidde;
     public FileVo(File file) {
         name=file.getName();
         path=file.getAbsolutePath();
@@ -19,5 +20,6 @@ public class FileVo {
         size=file.length();
         lastModifiedTime=file.lastModified();
         prentPath=file.getParentFile().getAbsolutePath();
+        hidde=file.isHidden();
     }
 }

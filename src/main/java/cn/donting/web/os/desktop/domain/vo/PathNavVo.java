@@ -3,12 +3,7 @@ package cn.donting.web.os.desktop.domain.vo;
 import lombok.Data;
 
 @Data
-public class DiskVo {
+public class PathNavVo {
     String name;
     String path;
-
-    long totalSpace;
-    long freeSpace ;
-    long usableSpace ;
-
 }

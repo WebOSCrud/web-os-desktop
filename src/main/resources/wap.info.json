@@ -36,8 +36,9 @@
       "option": {
         "url": "/page/filemanager/index.html",
         "iconUrl": "/img/explorer.png",
-        "width":700,
-        "height":500
+        "title": "文件管理器",
+        "width":900,
+        "height":700
       }
     }
   ]

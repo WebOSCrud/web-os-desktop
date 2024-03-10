@@ -16,13 +16,13 @@ import java.util.List;
 @Slf4j
 public class DiskController {
 
-    @PostMapping("/list")
+    @PostMapping({"/list"})
     public ResponseBody<List<DiskVo>> list() {
         File[] files = File.listRoots();
         List<DiskVo> diskVos = new ArrayList<>();
         for (File file : files) {
             DiskVo diskVo = new DiskVo();
-            diskVo.setName(file.getName());
+            diskVo.setName(file.getPath());
             diskVo.setPath(file.getPath());
             diskVo.setFreeSpace(file.getFreeSpace());
             diskVo.setTotalSpace(file.getTotalSpace());
