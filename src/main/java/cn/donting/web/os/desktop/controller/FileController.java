@@ -35,7 +35,7 @@ public class FileController {
         if (oldFile.renameTo(newFile)) {
             return ResponseBody.success(new FileVo(newFile));
         }
-        return ResponseBody.fail("重命名失败");
+        throw new RuntimeException("");
     }
 
     @PostMapping("/list")
@@ -53,18 +53,18 @@ public class FileController {
     public ResponseBody<List<PathNavVo>> pathNav(@RequestBody FilePathPar filePathPar) {
         File file = new File(filePathPar.getPath());
         if (!file.exists()) {
-            return ResponseBody.fail(filePathPar.getPath()+"<br>路径错误");
+            return ResponseBody.fail(filePathPar.getPath() + "<br>路径错误");
         }
         List<PathNavVo> pathNavVos = new LinkedList<>();
-        while (file!=null) {
+        while (file != null) {
             PathNavVo pathNavVo = new PathNavVo();
             pathNavVo.setName(file.getName());
-            if(file.getName()==null || file.getName().isEmpty()){
+            if (file.getName() == null || file.getName().isEmpty()) {
                 pathNavVo.setName(file.getPath());
             }
             pathNavVo.setPath(file.getPath());
-            pathNavVos.add(0,pathNavVo);
-            file=file.getParentFile();
+            pathNavVos.add(0, pathNavVo);
+            file = file.getParentFile();
         }
         return ResponseBody.success(pathNavVos);
     }

@@ -1,5 +1,7 @@
 package cn.donting.web.os.desktop.domain.vo;
 
+import cn.donting.web.os.api.wap.FileType;
+import cn.hutool.core.io.FileUtil;
 import lombok.Data;
 
 import java.io.File;
@@ -13,6 +15,7 @@ public class FileVo {
     private long lastModifiedTime;
     private String prentPath;
     private boolean hidde;
+    private String extName;
     public FileVo(File file) {
         name=file.getName();
         path=file.getAbsolutePath();
@@ -21,5 +24,10 @@ public class FileVo {
         lastModifiedTime=file.lastModified();
         prentPath=file.getParentFile().getAbsolutePath();
         hidde=file.isHidden();
+        if(dir){
+            extName=FileType.ext_name_Directory;
+        }else {
+            extName= FileUtil.extName(file);
+        }
     }
 }
